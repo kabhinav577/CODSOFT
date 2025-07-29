@@ -1,5 +1,5 @@
-import re  # Import regular expressions for pattern matching
-import random  # Import random to choose random responses
+import re  
+import random  
 
 # Dictionary to store context (like user's name)
 context = {
