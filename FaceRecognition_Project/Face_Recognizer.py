@@ -1,32 +1,32 @@
 import cv2
+from simple_facerec import SimpleFaceRec
 
-# Load OpenCV's pre-trained Haar cascade for frontal face
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+# Encode faces from a folder
+sfr = SimpleFaceRec()
+sfr.load_encoding_images("FaceRecognition_Project/known_faces/")
 
-# Start webcam
+# Load Camera
 cap = cv2.VideoCapture(0)
-print("Face Detection... Press 'q' to quit.")
+
 
 while True:
     ret, frame = cap.read()
+
     if not ret:
         break
 
-    # Convert frame to grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    # Detect Faces
+    face_locations, face_names = sfr.detect_known_faces(frame)
+    for face_loc, name in zip(face_locations, face_names):
+        y1, x2, y2, x1 = face_loc[0], face_loc[1], face_loc[2], face_loc[3]
 
-    # Detect faces in the image
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+        cv2.putText(frame, name,(x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (182, 252, 3), 2)
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (182, 252, 3), 2)
 
-    # Draw rectangles around detected faces
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 255), 2)
-        cv2.putText(frame, "", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
-
-    # Show output
-    cv2.imshow("Face Detection", frame)
+    cv2.imshow("Face Recognition", frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
+        print("Exiting...")
         break
 
 cap.release()
