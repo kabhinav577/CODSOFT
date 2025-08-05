@@ -20,8 +20,8 @@ while True:
     for face_loc, name in zip(face_locations, face_names):
         y1, x2, y2, x1 = face_loc[0], face_loc[1], face_loc[2], face_loc[3]
 
-        cv2.putText(frame, name,(x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (182, 252, 3), 2)
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (182, 252, 3), 2)
+        cv2.putText(frame, name,(x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (179, 9, 54), 2)
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (179, 9, 54), 2)
 
     cv2.imshow("Face Recognition", frame)
 
