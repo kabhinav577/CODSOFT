@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Step 1: Load the movies dataset
-movies = pd.read_csv("/Users/krishnakant/Desktop/CODSOFT/Recommendation System/movies.csv")
+movies = pd.read_csv("/Users/krishnakant/Desktop/CODSOFT/codsoft_task4/movies.csv")
 movies
 
 # Step 2: Fill any missing genres with empty string
@@ -22,15 +22,12 @@ cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 # Step 6: Create a mapping from movie titles to their DataFrame index
 indices = pd.Series(movies.index, index=movies['title'].str.lower())
 
-# Step 7: Function to recommend similar movies
 def recommend_movies(title, num_recommendations=5):
     title = title.lower().strip()
 
-    # Try exact match first
     if title in indices:
         idx = indices[title]
     else:
-        # Try to find a partial match
         matches = movies[movies['title'].str.lower().str.contains(title, na=False)]
         if matches.empty:
             return f"No movies found matching '{title}'."
@@ -53,7 +50,5 @@ def recommend_movies(title, num_recommendations=5):
 
     return movies['title'].iloc[movie_indices]
 
-
-# Step 8: Test the recommender
 print("Recommendations for 'Fight Club':")
 print(recommend_movies("Fight Club"))
