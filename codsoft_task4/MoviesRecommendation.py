@@ -50,5 +50,6 @@ def recommend_movies(title, num_recommendations=5):
 
     return movies['title'].iloc[movie_indices]
 
-print("Recommendations for 'Fight Club':")
-print(recommend_movies("Fight Club"))
+sample_movie = input("Enter a movie title to get recommendations: ")
+print(f"Recommendations for '{sample_movie}':")
+print(recommend_movies(sample_movie))

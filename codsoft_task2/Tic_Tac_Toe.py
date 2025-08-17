@@ -5,9 +5,11 @@ board = [[' ' for _ in range(3)] for _ in range(3)]
 
 # Display the board
 def print_board():
+    print()
     for row in board:
         print('|'.join(row))
         print('-' * 5)
+    print()
 
 # Check for winner
 def check_winner(b):

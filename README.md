@@ -32,6 +32,34 @@ It uses **if-else conditions** and **string matching** to detect user intent and
 
 ---
 
+## 📌 **Task 2: Tic-Tac-Toe AI (Minimax with Alpha-Beta Pruning)**
+
+### 🔹 Overview
+
+An **unbeatable Tic-Tac-Toe AI** that plays optimally using the **Minimax Algorithm** with **Alpha-Beta Pruning** for efficiency.  
+The AI ensures that the human player cannot win, only draw or lose.
+
+### 🛠 Features
+
+- Human vs AI gameplay
+- Minimax algorithm for decision-making
+- Alpha-Beta pruning to optimize search
+- Text-based interface
+
+### 🧠 How It Works
+
+1. Represent the Tic-Tac-Toe board as a list.
+2. The AI evaluates all possible moves using **Minimax**.
+3. **Alpha-Beta pruning** skips branches that cannot influence the final decision.
+4. The AI always plays the optimal move.
+
+### 📷 Screenshot
+
+![Tic Tac Toe Output](Screenshots/tic-tac-toe-1.png)
+![Tic Tac Toe Output](Screenshots/tic-tac-toe-2.png)
+
+---
+
 ## 📌 **Task 4: Movie Recommendation System**
 
 ### 🔹 Overview
